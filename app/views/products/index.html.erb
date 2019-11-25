@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Controle de Materiais</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Tipo de Produto</th>
+      <th>Valor de Vendas</th>
+      <th>Valor de Compra</th>
+      <th>Quantidade</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.product_type %></td>
+        <td><%= product.sale_value %></td>
+        <td><%= product.purchase_value %></td>
+        <td><%= product.quantity %></td>
+        <td><%= link_to 'Visualizar', product %></td>
+        <td><%= link_to 'Editar', edit_product_path(product) %></td>
+        <td><%= link_to 'Excluir', product, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+        <td><%= link_to 'Ordem', create_order_path(product) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Produto', new_product_path %>
